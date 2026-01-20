@@ -3,6 +3,7 @@ import trattoria from '../../assets/3a244472c90467aeb9c58ffac7808807e160ee0c.png
 import hioki from '../../assets/5d53a2e228895a55942ffb290182da4c32ba645d.png'
 import { TagDestaque } from "../Tag/styles"
 import Tag from "../Tag"
+import { useNavigate } from "react-router-dom"
 
 export type Props = {
     children: 'Japonesa' | 'Italiana'
@@ -10,8 +11,11 @@ export type Props = {
     description: string
 }
  
+    
+const Card = ({ children, title, description }: Props) => {
+    const navigate = useNavigate()
 
-const Card = ({ children, title, description }: Props) => (
+    return(
     <div>
     <CardHome>
     <ImagensHome src={children  === 'Japonesa' ? (hioki) : (trattoria)} />
@@ -30,9 +34,10 @@ const Card = ({ children, title, description }: Props) => (
     </ImageTitle>
     </div>
     <Description>{description}</Description>
-    <ButtonPerfil href="/perfil">Saiba mais</ButtonPerfil>
+    <ButtonPerfil onClick={() => navigate('/perfil')}>Saiba mais</ButtonPerfil>
     </CardHome>
     </div>
-)
+)    
+}
 
 export default Card

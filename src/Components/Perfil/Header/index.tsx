@@ -1,6 +1,7 @@
 import logo from '../../../assets/Hero.png'
 import { Cabeçalho } from './styles'
 
+
 const HeaderPerfil = () => (
     <div className="container">
         <Cabeçalho>
