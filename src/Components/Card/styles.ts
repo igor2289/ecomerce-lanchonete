@@ -54,4 +54,5 @@ export const ButtonPerfil = styled.a`
     display: block;
     left: 0;
     margin-left: 8px;
+    cursor: pointer;
 `
