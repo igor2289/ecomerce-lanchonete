@@ -1,7 +1,7 @@
 import { TagImage } from "./styles"
 
 type Props = {
-    children: 'Japonesa' | 'Italiana'
+    children: string[]
 }
 
 const Tag = ({children}: Props) => (

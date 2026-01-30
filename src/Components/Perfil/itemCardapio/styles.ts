@@ -1,6 +1,12 @@
 import styled from "styled-components";
 import { cores } from "../../../styles";
 
+export const ContainerItem = styled.div`
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+`
+
 export const ImagemCardapio = styled.img`
     height: 167px;
     width: 304px;
@@ -21,11 +27,11 @@ export const DescricaoCardapio = styled.p`
     margin-bottom: 16px;
 `
 
-export const ButtonCardapio = styled.a`
+export const ButtonCardapio = styled.button`
     display: flex;
     color: ${cores.vermelho};
     background-color: #FFEBD9;
-    padding: 4px 0;
+    padding: 4px;
     font-weight: bold;
     width: 304px;
     border: none;
@@ -34,4 +40,6 @@ export const ButtonCardapio = styled.a`
     height: 24px;
     font-size: 14px;
     text-decoration: none;
+    margin-top: auto;
+
 `

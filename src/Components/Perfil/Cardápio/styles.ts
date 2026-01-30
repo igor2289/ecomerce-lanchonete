@@ -11,8 +11,8 @@ export const GridCardapio = styled.ul`
 
     li {
     background-color: ${cores.vermelho};
-    width: 320px;
-    padding: 8px 8px 8px;
+    max-width: 320px;
+    padding: 8px;
     cursor: pointer;
     }
 `

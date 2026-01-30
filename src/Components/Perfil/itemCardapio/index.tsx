@@ -1,15 +1,29 @@
-import imageCardapio from '../../../assets/perfil-cardapio.png'
-import { ButtonCardapio, DescricaoCardapio, ImagemCardapio, TituloCardapio } from './styles'
+import { ButtonCardapio, ContainerItem, DescricaoCardapio, ImagemCardapio, TituloCardapio } from './styles'
 
-    const ItemCardapio = () => {
+export type PropsItem = {
+    foto: string
+    preco: number
+    id: number
+    nome: string
+    descricao: string
+    porcao: string
+}
+
+type ItemCardapioProps = {
+    item: PropsItem
+    onSelect: (item: PropsItem) => void
+}
+
+const ItemCardapio = ({ item, onSelect }: ItemCardapioProps) => {
+
     return (
-        <>
-    <div>
-    <ImagemCardapio src={imageCardapio} alt="" />
-    <TituloCardapio>Pizza Marguerita</TituloCardapio>
-    <DescricaoCardapio>A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!</DescricaoCardapio>
-    <ButtonCardapio href='/modal'>Adicionar ao carrinho</ButtonCardapio>
-    </div>
+    <>
+    <ContainerItem>
+    <ImagemCardapio src={item.foto} alt="" />
+    <TituloCardapio>{item.nome}</TituloCardapio>
+    <DescricaoCardapio>{item.descricao}</DescricaoCardapio>
+    <ButtonCardapio onClick={() => onSelect(item)}>Adicionar ao carrinho</ButtonCardapio>
+    </ContainerItem>
     </>
 )
 }
