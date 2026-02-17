@@ -11,11 +11,13 @@ export const CardHome = styled.div`
 
 export const ImagensHome = styled.button`
     height: 217px;
-    max-width: 100%;
+    max-width: 472px;
     width: 100%;
     margin-bottom: 8px;
     position: relative;
     border: none;
+    background-repeat: no-repeat;
+    background-size: cover;
 
     ul {
     top: 0;
