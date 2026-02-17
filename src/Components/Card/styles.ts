@@ -9,11 +9,28 @@ export const CardHome = styled.div`
     width: 100%;
 `
 
-export const ImagensHome = styled.img`
+export const ImagensHome = styled.button`
     height: 217px;
+    max-width: 100%;
     width: 100%;
     margin-bottom: 8px;
     position: relative;
+    border: none;
+
+    ul {
+    top: 0;
+    display: flex;
+    gap: 16px;
+    width: auto;
+    height: 100%;
+    right: 0;
+    list-style: none;
+    }
+
+    // li: nth-child(1) {
+    //     position: absolute;
+        
+    // }
 `
 
 export const ImageTitle = styled.ul`
@@ -27,6 +44,7 @@ export const ImageTitle = styled.ul`
 
     i{
     color: #FFB930;
+    margin-left: 8px;
     }
 `
 

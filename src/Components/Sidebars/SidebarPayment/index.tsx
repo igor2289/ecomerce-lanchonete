@@ -8,7 +8,7 @@ const SidebarPayment = () => {
 
     const navigate = useNavigate()
 
-    return(
+    return (
     <>
     <Perfil />
     <div className="viewport-shadow">

@@ -31,6 +31,7 @@ export const ImagemModal = styled.img`
     width: 280px;
     height: 280px;
     margin-right: 24px;
+    object-fit: cover;
 `
 
 export const TituloModal = styled.h3`

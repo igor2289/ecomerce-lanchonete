@@ -13,6 +13,11 @@ export const ImagemCardapio = styled.img`
     position: center;
     left: 8px;
     top: 0;
+    object-fit: cover;
+    background-size: cover;
+    border: none;
+    position: relative;
+    background-position: center 50%;
 `
 
 export const TituloCardapio = styled.h3`

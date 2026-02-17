@@ -7,13 +7,15 @@ export const ContainerFooter = styled.footer`
     text-align: center;
     width: 100%;
     padding-top: 80px;
-
+    padding-bottom: 40px;
+    background-color: #FFEBD9;
 
     img {
     height: 56px;
     width: 126px;
-    margi-bottom: 32px;
-    display: block;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
     margin: 0 auto;
     }
 `

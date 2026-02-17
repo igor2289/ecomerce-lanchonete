@@ -4,11 +4,15 @@ import { cores } from "../../../styles"
 export const ContainerSidebar = styled.div`
     background-color: ${cores.vermelho};
     padding: 32px 8px;
-    display: block;
+    display: none;
     position: fixed;
     right: 0;
     width: 360px;
     height: 100%;
+
+    &.is-open {
+        display: block;
+    }
 `
 
 export const Produto = styled.div`
@@ -18,7 +22,7 @@ export const Produto = styled.div`
     height: 100px;
     max-width: 344px;
     display: flex;
-    margin-bottom: 40px;
+    margin-bottom: 16px;
     max-height: 100px;
 `
 
@@ -53,6 +57,7 @@ export const ValorTotal = styled.div`
     display: flex;
     justify-content: space-between;
     margin-bottom: 16px;
+    margin-top: 32px;
 `
 
 export const BotaoCarrinho = styled.a`

@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 export const cores = {
+    primaria: 'rgba(238, 151, 94, 0.94)',
     vermelho: '#E66767'
 }
 

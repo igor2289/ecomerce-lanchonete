@@ -3,6 +3,7 @@ import { cores } from "../../styles";
 
 export const ContainerHeader = styled.div `
     color: ${cores.vermelho};
+    background-color: #FFEBD9;
     align-items: center;
     padding: 24px;
     text-align: center;
@@ -13,7 +14,7 @@ export const Logo = styled.img`
     margin-top: 40px;
     margin-bottom: 40px;
     width: 125px;
-    height: 56px;
+    height: 57px;
 `
 
 export const Título = styled.h1`

@@ -22,7 +22,7 @@ const ItemCardapio = ({ item, onSelect }: ItemCardapioProps) => {
     <ImagemCardapio src={item.foto} alt="" />
     <TituloCardapio>{item.nome}</TituloCardapio>
     <DescricaoCardapio>{item.descricao}</DescricaoCardapio>
-    <ButtonCardapio onClick={() => onSelect(item)}>Adicionar ao carrinho</ButtonCardapio>
+    <ButtonCardapio onClick={() => onSelect(item)}>Mais detalhes</ButtonCardapio>
     </ContainerItem>
     </>
 )

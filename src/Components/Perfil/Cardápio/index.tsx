@@ -4,11 +4,10 @@ import { GridCardapio } from "./styles"
 import type { Restaurante } from "../../Home"
 import { useParams } from "react-router-dom"
 
-type CardapioProps = {
-    onSelect: (item: PropsItem) => void
+type ItemSelecionado = {
+    onSelect: (itemAtual: PropsItem) => void
 }
-
-const Cardapio = ({ onSelect }: CardapioProps) => {
+    const Cardapio = ({ onSelect }: ItemSelecionado) => {
     const [produto, setProduto] = useState<Restaurante>()
     const { id } = useParams<{ id: string }>()
 
@@ -31,7 +30,7 @@ const Cardapio = ({ onSelect }: CardapioProps) => {
         <GridCardapio>
             {produto.cardapio.map((item) => (
             <li key={item.id}>
-                <ItemCardapio onSelect={onSelect} item={item} />
+                <ItemCardapio onSelect={() => onSelect(item)} item={item} />
             </li>
             ))}
         </GridCardapio>

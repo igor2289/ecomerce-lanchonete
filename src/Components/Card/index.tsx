@@ -2,6 +2,7 @@ import { ButtonPerfil, CardHome, Description, ImagensHome, ImageTitle } from "./
 import { TagDestaque } from "../Tag/styles"
 import Tag from "../Tag"
 import { useNavigate } from "react-router-dom"
+import { encurtaTexto } from "../../utils/text"
 
 export type PropsInfos = {
     description: string[]
@@ -19,9 +20,17 @@ const Card = ({ title, description, foto, children, tipo, avaliacao, id }: Props
     return(
     <div>
     <CardHome>
-    <ImagensHome src={foto} />
-    {children === 'Japonesa' && (<TagDestaque children="Destaque da semana"></TagDestaque>)}
-    {tipo && <Tag children={tipo}></Tag>}
+    <ImagensHome style={{backgroundImage: `url(${foto})`}}>
+    <ul>
+        <li>
+            {children === 'Japonesa' && (<TagDestaque children="Destaque da semana"></TagDestaque>)}
+        </li>
+        <li>
+            {tipo && <Tag children={tipo}></Tag>}
+        </li>
+    </ul>
+    </ImagensHome>
+    
     <div>
     <ImageTitle>
     <li>
@@ -32,7 +41,7 @@ const Card = ({ title, description, foto, children, tipo, avaliacao, id }: Props
     </li>
     </ImageTitle>
     </div>
-    <Description>{description}</Description>
+    <Description>{encurtaTexto(description, 270)}</Description>
     <ButtonPerfil onClick={() => navigate(`/restaurante/${id}`)}>Saiba mais</ButtonPerfil>
     </CardHome>
     </div>

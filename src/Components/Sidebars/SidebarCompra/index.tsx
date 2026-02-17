@@ -1,42 +1,63 @@
-import Perfil from '../../Perfil'
-import type { PropsItem } from '../../Perfil/itemCardapio'
-import * as styled from './styles'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import type { RootReducer } from '../../../store'
 
-type PropsCompra = {
-    produto: PropsItem
-    onClose: () => void
-}
+import * as styled from './styles'
+import { close, remove } from '../../../store/reducers/cart'
+import { formataPreco } from '../../../utils/text'
 
-const Sidebar = ({ produto, onClose }: PropsCompra) => {
+const Sidebar = () => {
+    const dispatch = useDispatch()
+    const {isOpen, items} = useSelector((state: RootReducer) => state.cart)
+
+    const closeCart = () => {
+        dispatch(close())
+    }
+
+     const getTotalPrice = () => {
+            return items.reduce((acumulador, valorAtual) => {
+            return (acumulador += valorAtual.preco)
+            }, 0)
+        }
+
+    const removeItem = (id: number) => {
+        dispatch(remove(id))
+    }
 
     const navigate = useNavigate()
 
-    const formataPreco = (preco = 0) => {
-  return new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL'
-  }).format(preco)
-}
+    const abreEntrega = () => {
+        if(items.length > 0) {
+            closeCart()
+            navigate("/entrega")
+        } else {
+            alert('É preciso adicionar um item para continuar a compra.')
+        }
+    }
 
     return(
         <>
-        <Perfil />
-        <div className="viewport-shadow">
-        <styled.ContainerSidebar>
+    <div onClick={closeCart} className="viewport-shadow">
+        <styled.ContainerSidebar onClick={(e) => e.stopPropagation()} className={isOpen ? 'is-open' : ''}>
+            <ul>
+                {items.map((item) => (
+                <li key={item.id}>
             <styled.Produto>
-            <styled.PizzaSidebar src={produto.foto} alt="" />
-           <styled.DescricaoProduto>
-             <h3>{produto.nome}</h3>
-            <p>{formataPreco(produto.preco)}</p>
-           </styled.DescricaoProduto>
-            <styled.BotaoRemover onClick={onClose}><i className="bi bi-trash3"></i></styled.BotaoRemover>
-        </styled.Produto>
+            <styled.PizzaSidebar src={item.foto} alt="" />
+            <styled.DescricaoProduto>
+            <h3>{item.nome}</h3>
+            <p>{formataPreco(item.preco)}</p>
+            </styled.DescricaoProduto>
+            <styled.BotaoRemover onClick={() => removeItem(item.id)}><i className="bi bi-trash3"></i></styled.BotaoRemover>
+            </styled.Produto>
+                </li>
+                ))}
+            </ul>
         <styled.ValorTotal>
             <p>Valor Total</p>
-            <p>{formataPreco(produto.preco)}</p>
+            <p>{formataPreco(getTotalPrice())}</p>
         </styled.ValorTotal>
-        <styled.BotaoCarrinho onClick={() => navigate('/entrega')}>Continuar com a entrega</styled.BotaoCarrinho>
+        <styled.BotaoCarrinho onClick={abreEntrega}>Continuar com a entrega</styled.BotaoCarrinho>
         </styled.ContainerSidebar>
     </div>
     </>
