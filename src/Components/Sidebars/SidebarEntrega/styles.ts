@@ -1,6 +1,16 @@
 import styled from "styled-components";
 import { cores } from "../../../styles";
 
+export const ContainerDelivey = styled.div`
+    background-color: ${cores.vermelho};
+    padding: 32px 8px;
+    display: block;
+    position: fixed;
+    right: 0;
+    width: 360px;
+    height: 100%;
+`
+
 export const TituloEntrega = styled.h3`
     color: #FFEBD9;
     font-weight: bold;

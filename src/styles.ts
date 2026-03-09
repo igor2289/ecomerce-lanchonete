@@ -13,13 +13,13 @@ export const GlobalCss = createGlobalStyle`
     font-family: Roboto, sans-serif;
 
      .viewport-shadow{
-     inset: 0;
-    position: fixed;
-     display: flex;
-     z-index: 99999;
-     justify-content: center;
-      background: rgba(0, 0, 0, 0.7);
-      height: 100%;
+        inset: 0;
+        position: fixed;
+        display: flex;
+        z-index: 99999;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.7);
+        height: 100%;
      }
 }
     .container {

@@ -5,13 +5,14 @@ export const GridCardapio = styled.ul`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     list-style: none;
-    gap: 24px;
-    padding-top: 56px;
-    padding-bottom: 120px;
+    gap: 32px;
+    margin-top: 56px;
+    margin-bottom: 120px;
+    width: 100%;
 
     li {
     background-color: ${cores.vermelho};
-    max-width: 320px;
+    width: 100%;
     padding: 8px;
     cursor: pointer;
     }

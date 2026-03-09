@@ -2,7 +2,7 @@ import { ButtonPerfil, CardHome, Description, ImagensHome, ImageTitle } from "./
 import { TagDestaque } from "../Tag/styles"
 import Tag from "../Tag"
 import { useNavigate } from "react-router-dom"
-import { encurtaTexto } from "../../utils/text"
+import { encurtaTexto } from "../../utils"
 
 export type PropsInfos = {
     description: string[]

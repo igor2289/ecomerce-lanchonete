@@ -1,40 +1,31 @@
 import styled from "styled-components";
 import { cores } from "../../../styles";
 
-export const HeaderPerfil = styled.div`
-    background-color: #FFEBD9;
-    max-width: 1024px;
-    width: 100%;
-`
-
 export const Cabeçalho = styled.div`
     height: 186px;
     padding-top: 63px;
-    margin: 0 auto;
+    background-color: #FFEBD9;
+    width: 100%;
+    font-weight: 900;
+
+    .openCart {
+        cursor: pointer;
+    }
 
     ul {
         list-style: none;
         color: ${cores.vermelho};
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         width: 100%;
         align-items: center;
         font-weight: bold;
-        position: relative
-        height: 91px;
-}
-    li:nth-child(1) {
-        position: absolute;
-        left: 171px;
-    }
-
-    li:nth-child(3) {
-        position: absolute;
-        right: 171px;
+        position: relative;
+        height: 100%;
     }
 
     p {
-        width: 256px;
+        // width: 256px;
         margin-top: 16px;
         font-weight: 900;
     }
@@ -42,14 +33,7 @@ export const Cabeçalho = styled.div`
     img {
         cursor: pointer;
         height: 57px;
-        width: 125px;
+        position: absolute;
+        top: 0;
     }
-
-`
-
-export const CartButton = styled.li`
-    width: 256px;
-    margin-top: 16px;
-    font-weight: 900;
-    cursor: pointer;
 `

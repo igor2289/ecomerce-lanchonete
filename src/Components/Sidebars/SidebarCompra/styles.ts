@@ -13,6 +13,10 @@ export const ContainerSidebar = styled.div`
     &.is-open {
         display: block;
     }
+
+    li {
+        list-style: none;
+    }
 `
 
 export const Produto = styled.div`
@@ -29,7 +33,10 @@ export const Produto = styled.div`
 export const PizzaSidebar = styled.img`
     width: 80px;
     height: 80px;
-    `
+    background-position: center 50%;  
+    object-fit: cover;
+    background-size: cover;
+`
 
 export const DescricaoProduto = styled.div`
     display: block;

@@ -1,14 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 import type { RootReducer } from '../../../store'
 
 import * as styled from './styles'
 import { close, remove } from '../../../store/reducers/cart'
-import { formataPreco } from '../../../utils/text'
+import { formataPreco } from '../../../utils'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const Sidebar = () => {
     const dispatch = useDispatch()
     const {isOpen, items} = useSelector((state: RootReducer) => state.cart)
+    const navigate = useNavigate()
+    const { id } = useParams<{ id: string }>()
+
 
     const closeCart = () => {
         dispatch(close())
@@ -24,12 +27,10 @@ const Sidebar = () => {
         dispatch(remove(id))
     }
 
-    const navigate = useNavigate()
-
-    const abreEntrega = () => {
+    const renderDelivery = () => {
         if(items.length > 0) {
             closeCart()
-            navigate("/entrega")
+            navigate(`/restaurante/${id}/delivery`)
         } else {
             alert('É preciso adicionar um item para continuar a compra.')
         }
@@ -57,8 +58,8 @@ const Sidebar = () => {
             <p>Valor Total</p>
             <p>{formataPreco(getTotalPrice())}</p>
         </styled.ValorTotal>
-        <styled.BotaoCarrinho onClick={abreEntrega}>Continuar com a entrega</styled.BotaoCarrinho>
-        </styled.ContainerSidebar>
+        <styled.BotaoCarrinho onClick={renderDelivery}>Continuar com a entrega</styled.BotaoCarrinho>
+     </styled.ContainerSidebar>
     </div>
     </>
     )}

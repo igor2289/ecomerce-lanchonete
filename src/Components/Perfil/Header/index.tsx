@@ -3,9 +3,9 @@ import type { RootReducer } from '../../../store'
 import { useNavigate } from 'react-router-dom'
 
 import logo from '../../../assets/Hero.png'
-import { Cabeçalho, CartButton } from './styles'
 import { open } from '../../../store/reducers/cart'
 
+import { Cabeçalho } from './styles'
 
 const HeaderPerfil = () => {
 
@@ -20,14 +20,14 @@ const HeaderPerfil = () => {
     return(
     <header>
         <Cabeçalho>
-        <div>
+        <div className='container'>
         <ul>
             <li><p>Restaurante</p></li>
             <li><img onClick={() => navigate('/')} src={logo} alt="" /></li>
-            <CartButton onClick={openCart}><p>{items.length} produtos(s) no carrinho</p></CartButton>
+            <li className='openCart' onClick={openCart}><p>{items.length} produtos(s) no carrinho</p></li>
         </ul>
         </div>
-    </Cabeçalho>
+        </Cabeçalho>
     </header>
 )
 }

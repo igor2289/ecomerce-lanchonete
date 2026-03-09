@@ -1,18 +1,16 @@
-import { useNavigate } from "react-router-dom";
-import {  ContainerSidebar } from "../SidebarCompra/styles";
-import { DisplayFlex, InputEntrega, ItemFormulario, LabelEntrega, TituloEntrega } from "../SidebarEntrega/styles";
+import { useNavigate, useParams } from "react-router-dom";
+import { ContainerDelivey, DisplayFlex, InputEntrega, ItemFormulario, LabelEntrega, TituloEntrega } from "../SidebarEntrega/styles";
 import { ButtonPayment, Input1, Input2, Input3 } from "./styles";
-import Perfil from "../../Perfil";
 
 const SidebarPayment = () => {
 
     const navigate = useNavigate()
+    const { id } = useParams<{ id: string }>()
 
     return (
     <>
-    <Perfil />
     <div className="viewport-shadow">
-        <ContainerSidebar>
+        <ContainerDelivey>
         <TituloEntrega>Pagamento - Valor a pagar R$ 60,90</TituloEntrega>
         <LabelEntrega htmlFor="">Nome no cartão</LabelEntrega>
             <ItemFormulario>
@@ -38,14 +36,13 @@ const SidebarPayment = () => {
             <Input3 />
             </div>
         </DisplayFlex>
-       
         <ItemFormulario>
-            <ButtonPayment onClick={() => navigate('/success')}>Finalizar pagamento</ButtonPayment>
+            <ButtonPayment>Finalizar pagamento</ButtonPayment>
         </ItemFormulario>
         <ItemFormulario>
-            <ButtonPayment onClick={() => navigate('/entrega')}>Voltar para a edição de endereço</ButtonPayment>
+            <ButtonPayment onClick={() => navigate(`/restaurante/${id}/delivery`)}>Voltar para a edição de endereço</ButtonPayment>
         </ItemFormulario>
-        </ContainerSidebar>
+        </ContainerDelivey>
         </div>
         </>
 )

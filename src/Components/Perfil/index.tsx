@@ -8,6 +8,7 @@ import { useSelector } from "react-redux"
 import type { RootReducer } from "../../store"
 import Modal from "./Modal"
 import type { PropsItem } from "./itemCardapio"
+import { Outlet } from "react-router-dom"
 
 
 const Perfil = () => {
@@ -31,6 +32,7 @@ const Perfil = () => {
         setItemSelecionado(item)
         setModalAberto(true)
     }} />
+    <Outlet />
         </>
     )
    

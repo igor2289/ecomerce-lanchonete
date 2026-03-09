@@ -25,6 +25,10 @@ export const ModalContainer = styled.div`
     top: 48px;
     z-index: 999;
     backdrop-filter: blur(1.5px);
+
+    .reduceWidth {
+        width: 218px;
+    }
 `
 
 export const ImagemModal = styled.img`
