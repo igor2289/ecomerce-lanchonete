@@ -3,7 +3,7 @@ import type { RootReducer } from '../../../store'
 import { useNavigate } from 'react-router-dom'
 
 import logo from '../../../assets/Hero.png'
-import { open } from '../../../store/reducers/cart'
+import { open } from '../../../store/reducers/Carrinho/cart'
 
 import { Cabeçalho } from './styles'
 

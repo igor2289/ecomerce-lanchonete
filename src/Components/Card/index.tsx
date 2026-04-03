@@ -8,13 +8,13 @@ export type PropsInfos = {
     description: string[]
     title: string[]
     foto: string
-    children: string
+    destacado: boolean
     tipo: string[]
     avaliacao: number
     id: number
 }
     
-const Card = ({ title, description, foto, children, tipo, avaliacao, id }: PropsInfos) => {
+const Card = ({ title, description, foto, destacado, tipo, avaliacao, id }: PropsInfos) => {
     const navigate = useNavigate()
 
     return(
@@ -23,7 +23,7 @@ const Card = ({ title, description, foto, children, tipo, avaliacao, id }: Props
     <ImagensHome style={{backgroundImage: `url(${foto})`}}>
     <ul>
         <li>
-            {children === 'Japonesa' && (<TagDestaque children="Destaque da semana"></TagDestaque>)}
+            {destacado && (<TagDestaque children="Destaque da semana"></TagDestaque>)}
         </li>
         <li>
             {tipo && <Tag children={tipo}></Tag>}

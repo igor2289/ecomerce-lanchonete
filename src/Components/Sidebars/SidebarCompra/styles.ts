@@ -65,6 +65,12 @@ export const ValorTotal = styled.div`
     justify-content: space-between;
     margin-bottom: 16px;
     margin-top: 32px;
+
+    .text-center {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
 `
 
 export const BotaoCarrinho = styled.a`

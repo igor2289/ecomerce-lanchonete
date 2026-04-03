@@ -29,10 +29,6 @@ export const ImagensHome = styled.button`
     list-style: none;
     }
 
-    // li: nth-child(1) {
-    //     position: absolute;
-        
-    // }
 `
 
 export const ImageTitle = styled.ul`

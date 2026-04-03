@@ -9,6 +9,12 @@ export const ContainerDelivey = styled.div`
     right: 0;
     width: 360px;
     height: 100%;
+
+    small {
+        margin-top: 16px;
+        font-size: 12px;
+        color: #fff;
+    }
 `
 
 export const TituloEntrega = styled.h3`

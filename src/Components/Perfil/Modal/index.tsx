@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux'
 import type { PropsItem } from '../itemCardapio'
 import { ButtonFechar, DescricaoModal, ImagemModal, ModalContainer, TituloModal } from './styles'
-import { add, open } from '../../../store/reducers/cart'
+import { add, open } from '../../../store/reducers/Carrinho/cart'
 
 import { ButtonCardapio } from '../itemCardapio/styles'
 import { formataPreco } from '../../../utils'

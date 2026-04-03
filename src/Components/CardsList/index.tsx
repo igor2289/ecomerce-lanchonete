@@ -9,18 +9,17 @@ type PropsProdutos = {
 const SectionHome = ({ produto }: PropsProdutos) => {
 
     return(
-        <div className="container">
-            <ContainerCards>
+            <div className="container">
+             <ContainerCards>
             <CardsList>
                 {produto.map((product) => (
-                    <><li key={product.id}>
-                        <Card id={product.id} avaliacao={product.avaliacao} tipo={product.tipo} foto={product.capa} description={product.descricao} title={product.titulo} children="Japonesa" />
+                    <li key={product.id}>
+                        <Card id={product.id} avaliacao={product.avaliacao} tipo={product.tipo} foto={product.capa} description={product.descricao} title={product.titulo} destacado={product.destacado} />
                     </li>
-                    </>
                 ))}
             </CardsList>
-        </ContainerCards>
-        </div>
-)
+            </ContainerCards>
+            </div>
+            )
 }
 export default SectionHome

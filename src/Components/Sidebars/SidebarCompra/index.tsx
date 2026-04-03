@@ -2,9 +2,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import type { RootReducer } from '../../../store'
 
 import * as styled from './styles'
-import { close, remove } from '../../../store/reducers/cart'
-import { formataPreco } from '../../../utils'
+import { close, remove } from '../../../store/reducers/Carrinho/cart'
+import { formataPreco, getTotalPrice } from '../../../utils'
 import { useNavigate, useParams } from 'react-router-dom'
+
+
 
 const Sidebar = () => {
     const dispatch = useDispatch()
@@ -17,20 +19,14 @@ const Sidebar = () => {
         dispatch(close())
     }
 
-     const getTotalPrice = () => {
-            return items.reduce((acumulador, valorAtual) => {
-            return (acumulador += valorAtual.preco)
-            }, 0)
-        }
-
     const removeItem = (id: number) => {
         dispatch(remove(id))
     }
 
-    const renderDelivery = () => {
+    const goToDelivery = () => {
         if(items.length > 0) {
             closeCart()
-            navigate(`/restaurante/${id}/delivery`)
+            navigate(`/restaurante/${id}/checkout`)
         } else {
             alert('É preciso adicionar um item para continuar a compra.')
         }
@@ -54,11 +50,19 @@ const Sidebar = () => {
                 </li>
                 ))}
             </ul>
-        <styled.ValorTotal>
+          {items.length > 0 ? (
+            <>
+            <styled.ValorTotal>
             <p>Valor Total</p>
-            <p>{formataPreco(getTotalPrice())}</p>
-        </styled.ValorTotal>
-        <styled.BotaoCarrinho onClick={renderDelivery}>Continuar com a entrega</styled.BotaoCarrinho>
+            <p>{formataPreco(getTotalPrice(items))}</p>
+            </styled.ValorTotal>
+            <styled.BotaoCarrinho type='submit' onClick={goToDelivery}>Continuar com a entrega</styled.BotaoCarrinho>
+            </>
+          ): (
+            <styled.ValorTotal>
+            <p className='text-center'>Você não adicionou produtos ao carrinho.</p>
+            </styled.ValorTotal>
+          )}
      </styled.ContainerSidebar>
     </div>
     </>

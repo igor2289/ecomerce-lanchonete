@@ -1,42 +1,35 @@
-import { useEffect, useState } from "react"
 import ItemCardapio, { type PropsItem } from "../itemCardapio"
-import type { Restaurante } from "../../Home"
 import { useParams } from "react-router-dom"
 
 import { GridCardapio } from "./styles"
+import { useGetRestaurantsQuery } from "../../../store/services/api"
+import { Loader } from "../../Loader"
 
 type ItemSelecionado = {
     onSelect: (itemAtual: PropsItem) => void
 }
-    const Cardapio = ({ onSelect }: ItemSelecionado) => {
-    const [produto, setProduto] = useState<Restaurante>()
-    const { id } = useParams<{ id: string }>()
 
-   useEffect(() => {
-    fetch('https://api-ebac.vercel.app/api/efood/restaurantes')
-      .then(res => res.json())
-      .then((data: Restaurante[]) => {
-        const restaurante = data.find(r => r.id === Number(id))
-        setProduto(restaurante)
-      })
-  }, [id])
-  
-    if (!produto) {
-        return <h3>Carregando....</h3>
-    }
+const Cardapio = ({ onSelect }: ItemSelecionado) => {
+    const { id } = useParams<{ id: string }>()
+    const { data, isLoading } = useGetRestaurantsQuery()
+    const produto = data?.find((r) => r.id === Number(id))
 
     return(
         <>
-       <div className="container">
+        {isLoading ? (
+            <Loader  />
+        ): (
+             <div className="container">
          <GridCardapio>
-            {produto.cardapio.map((item) => (
+            {produto?.cardapio.map((item) => (
             <li key={item.id}>
                 <ItemCardapio onSelect={() => onSelect(item)} item={item} />
             </li>
             ))}
         </GridCardapio>
        </div>
-    </>
+        )}
+        </>
     )
 }
 

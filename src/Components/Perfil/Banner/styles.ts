@@ -6,7 +6,10 @@ export const ImagemPerfil = styled.button`
      background-size: cover;
      border: none;
      position: relative;
-     background-position: center 50%;
+     background-repeat: no-repeat;
+     background-position: center 30%;  
+     object-fit: cover;
+
 
       &::after {
           position: absolute;

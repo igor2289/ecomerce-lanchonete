@@ -1,46 +1,93 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { ContainerDelivey, DisplayFlex, InputEntrega, ItemFormulario, LabelEntrega, TituloEntrega } from "../SidebarEntrega/styles";
-import { ButtonPayment, Input1, Input2, Input3 } from "./styles";
+import { ContainerDelivey, DisplayFlex, InputEntrega, ItemFormulario, TituloEntrega } from "../SidebarEntrega/styles";
+import { ButtonPayment, ErrorMessage, Input1, Input2, Input3, LabelPayment } from "./styles";
+import { checkInputHasError, formataPreco, getTotalPrice } from "../../../utils";
+import { useSelector } from "react-redux";
+import type { RootReducer } from "../../../store";
+import type { PropsCheckout } from "../../../models/checkout";
 
-const SidebarPayment = () => {
+export type PaymentFormValues = {
+  name: string
+  address: string
+  city: string
+  cep: string
+  number: string
+  complement?: string
+}
 
-    const navigate = useNavigate()
-    const { id } = useParams<{ id: string }>()
+const SidebarPayment = ({ form, setStep }: PropsCheckout) => {
+
+    const { items } = useSelector((state: RootReducer) => state.cart)
+    const formSubmit = () => {
+        form.validateForm().then((errors) => {
+                if(Object.keys(errors).length === 0) {
+                    form.handleSubmit()
+                } else {
+                    form.setTouched({
+                        payment: {
+                            card: {
+                                name: true,
+                                code: true,
+                                number: true,
+                                expires: {
+                                    month: true,
+                                    year: true
+                                }
+                            }
+                        }
+                    })
+                }}
+                )
+    }
 
     return (
     <>
     <div className="viewport-shadow">
         <ContainerDelivey>
-        <TituloEntrega>Pagamento - Valor a pagar R$ 60,90</TituloEntrega>
-        <LabelEntrega htmlFor="">Nome no cartão</LabelEntrega>
+        <TituloEntrega>Pagamento - Valor a pagar {formataPreco(getTotalPrice(items))}</TituloEntrega>
+        <LabelPayment htmlFor="">Nome no cartão</LabelPayment>
             <ItemFormulario>
-                <InputEntrega type="text" />
+                <InputEntrega onBlur={form.handleBlur} name="payment.card.name" onChange={form.handleChange} value={form.values.payment.card.name} id="cardName" type="text" />
+                {checkInputHasError('payment.card.name', form) && (
+                    <small>Nome inválido</small>
+                )}
             </ItemFormulario>
         <DisplayFlex>
             <div>
-            <LabelEntrega htmlFor="">Nome no cartão</LabelEntrega>
-            <Input1 />
+                <LabelPayment htmlFor="">Número do cartão</LabelPayment>
+                <Input1 onBlur={form.handleBlur} name="payment.card.number" onChange={form.handleChange} value={form.values.payment.card.number} id="cardNumber" type="text" />
+                {checkInputHasError('payment.card.number', form) && (
+                    <ErrorMessage className="marginLeft">Número inválido</ErrorMessage>
+                )}
             </div>
             <div>
-            <LabelEntrega htmlFor="">CVV</LabelEntrega>
-            <Input2 />
+                <LabelPayment htmlFor="">CVV</LabelPayment>
+                <Input2 onBlur={form.handleBlur} name="payment.card.code" onChange={form.handleChange} value={form.values.payment.card.code} id="cardCode" type="text" />
+                {checkInputHasError('payment.card.code', form) && (
+                    <ErrorMessage className="marginLeft">Código inválido</ErrorMessage>
+                )}
             </div>
         </DisplayFlex>
         <DisplayFlex>
             <div>
-            <LabelEntrega htmlFor="">Mês de vencimento</LabelEntrega>
-            <Input3 />
+                <LabelPayment htmlFor="">Mês de vencimento</LabelPayment>
+                <Input3 onBlur={form.handleBlur} name="payment.card.expires.month" onChange={form.handleChange} value={form.values.payment.card.expires.month} type="number" />
+                {checkInputHasError('payment.card.expires.month', form) && (
+                    <ErrorMessage className="marginLeft">Mês inválido</ErrorMessage>
+                )}
             </div>
             <div>
-            <LabelEntrega htmlFor="">Ano de vencimento</LabelEntrega>
-            <Input3 />
+                <LabelPayment htmlFor="">Ano de vencimento</LabelPayment>
+                <Input3 onBlur={form.handleBlur} name="payment.card.expires.year" onChange={form.handleChange} value={form.values.payment.card.expires.year} type="number" />
+                {checkInputHasError('payment.card.expires.year', form) && (
+                    <ErrorMessage className="marginLeft">Ano inválido</ErrorMessage>
+                )}
             </div>
         </DisplayFlex>
         <ItemFormulario>
-            <ButtonPayment>Finalizar pagamento</ButtonPayment>
+            <ButtonPayment className="marginTop" type="submit" onClick={formSubmit}>Finalizar pagamento</ButtonPayment>
         </ItemFormulario>
         <ItemFormulario>
-            <ButtonPayment onClick={() => navigate(`/restaurante/${id}/delivery`)}>Voltar para a edição de endereço</ButtonPayment>
+            <ButtonPayment onClick={() => setStep('delivery')} type="button">Voltar para a edição de endereço</ButtonPayment>
         </ItemFormulario>
         </ContainerDelivey>
         </div>

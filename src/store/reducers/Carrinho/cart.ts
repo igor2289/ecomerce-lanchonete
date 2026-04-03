@@ -1,6 +1,6 @@
 import { createSlice,  } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import type { PropsItem } from '../../Components/Perfil/itemCardapio'
+import type { PropsItem } from '../../../Components/Perfil/itemCardapio'
 
 type CartState = {
     items: PropsItem[]
@@ -34,9 +34,12 @@ const cartSlice = createSlice({
         },
         remove: (state, action: PayloadAction<number>) => {
             state.items = state.items.filter(item => item.id !== action.payload)
+        },
+        clear: (state) => {
+            state.items = []
         }
     }
 })
 
-export const { add, open, close, remove } = cartSlice.actions
+export const { add, open, close, remove, clear } = cartSlice.actions
 export default cartSlice.reducer
