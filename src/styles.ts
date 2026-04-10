@@ -5,6 +5,11 @@ export const cores = {
     vermelho: '#E66767'
 }
 
+export const breakpoints = {
+  desktop: '1024px',
+  tablet: '768px'
+}
+
 export const GlobalCss = createGlobalStyle`
     *{
     margin: 0;

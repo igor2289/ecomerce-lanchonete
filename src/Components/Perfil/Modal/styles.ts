@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { cores } from "../../../styles";
+import { breakpoints, cores } from "../../../styles";
 
 export const ButtonFechar = styled.a`
     background: Transparent;
@@ -29,6 +29,14 @@ export const ModalContainer = styled.div`
     .reduceWidth {
         width: 218px;
     }
+
+    @media (max-width: ${breakpoints.tablet}) {
+        display: block;
+        padding: 24px;
+        text-align: center;
+        width: 80%;
+        height: auto;
+    }
 `
 
 export const ImagemModal = styled.img`
@@ -36,6 +44,11 @@ export const ImagemModal = styled.img`
     height: 280px;
     margin-right: 24px;
     object-fit: cover;
+
+    @media (max-width: ${breakpoints.tablet}) {
+        padding-bottom: 16px;
+        margin: 0 auto;
+    }
 `
 
 export const TituloModal = styled.h3`

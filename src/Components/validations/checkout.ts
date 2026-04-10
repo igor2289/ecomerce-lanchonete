@@ -1,13 +1,14 @@
 import { useSelector } from "react-redux"
 import * as Yup from 'yup'
+import { useFormik } from "formik"
+
 import type { RootReducer } from "../../store"
 import { usePurchaseMutation, type PurchasePayload } from "../../store/services/api"
-import { useFormik } from "formik"
 
 export const deliverySchema = Yup.object({
     delivery: Yup.object({
-        receiver: Yup.string().required(),
-        address: Yup.object({
+      receiver: Yup.string().required(),
+      address: Yup.object({
       description: Yup.string().required(),
       city: Yup.string().required(),
       zipCode: Yup.string().required(),
@@ -16,17 +17,15 @@ export const deliverySchema = Yup.object({
     })
 })
     })
-    
-    
     export const paymentSchema = Yup.object({
-        payment: Yup.object({
-    card: Yup.object({
+      payment: Yup.object({
+      card: Yup.object({
       name: Yup.string().required(),
       number: Yup.string().min(16).required(),
       code: Yup.string().min(3).max(3).required(),
       expires: Yup.object({
         month: Yup.string().max(2).required(),
-        year: Yup.string().min(4).max(4).required()
+        year: Yup.string().min(2).required()
         })
     })
 })

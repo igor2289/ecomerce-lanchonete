@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { cores } from "../../../styles";
+import { breakpoints, cores } from "../../../styles";
 
 export const ContainerItem = styled.div`
     display: flex;
@@ -45,4 +45,8 @@ export const ButtonCardapio = styled.button`
     text-decoration: none;
     margin-top: auto;
     padding: 4px 0;
+
+    @media (max-width: ${breakpoints.tablet}) {
+        margin: 0 auto;
+    }
 `

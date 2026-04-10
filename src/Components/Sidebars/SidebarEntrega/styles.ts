@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { cores } from "../../../styles";
 
-export const ContainerDelivey = styled.div`
+export const ContainerDelivery = styled.div`
     background-color: ${cores.vermelho};
     padding: 32px 8px;
     display: block;
@@ -31,22 +31,24 @@ export const ItemFormulario = styled.div`
 `
 
 export const LabelEntrega = styled.label`
-    padding: 8px;
+    margin-left: 8px;
     font-weight: bold;
     font-size: 14px;
     line-height: 100%;
     color: #FFEBD9;
-    margin-bottom: 8px;
 `
 
 export const InputEntrega = styled.input`
     width: 100%;
     border: none;
     height: 32px;
+    padding-left: 8px;
+    margin-top: 4px;
 `
 
 export const DisplayFlex = styled.div`
     display: flex;
+    margin-top: 8px;
 `
 
 export const BotoesEntrega = styled.div`

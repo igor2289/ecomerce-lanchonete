@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { cores } from "../../../styles";
+import { breakpoints, cores } from "../../../styles";
 
 export const Cabeçalho = styled.div`
     height: 186px;
@@ -25,9 +25,12 @@ export const Cabeçalho = styled.div`
     }
 
     p {
-        // width: 256px;
         margin-top: 16px;
         font-weight: 900;
+
+        @media (max-width: ${breakpoints.tablet}) {
+            padding: 0 24px;
+        }
     }
 
     img {
@@ -35,5 +38,9 @@ export const Cabeçalho = styled.div`
         height: 57px;
         position: absolute;
         top: 0;
+
+        @media (max-width: ${breakpoints.tablet}) {
+            display: none;
+        }
     }
 `
