@@ -1,23 +1,25 @@
 import styled from "styled-components";
-import { cores } from "../../styles";
+import { colors } from "../../styles";
 
-export const ContainerHeader = styled.div `
-    color: ${cores.vermelho};
-    background-color: #FFEBD9;
+export const HeaderContainer = styled.div `
+    color: ${colors.primaria};
+    background-color: #242222;
     align-items: center;
     padding: 24px;
     text-align: center;
     padding-bottom: 120px;
+    border-bottom: 2px solid red;
+    box-shadow: 0 0 6px #f53737ff;
 `
 
-export const Logo = styled.img`
+export const Hero = styled.img`
     margin-top: 40px;
-    margin-bottom: 40px;
-    width: 125px;
-    height: 57px;
+    margin-bottom: 32px;
+    width: 192px;
+    height: 88px;
 `
 
-export const Título = styled.h1`
+export const Title = styled.h1`
     font-weight: bold;
     font-size: 36px;
     text-align: center;

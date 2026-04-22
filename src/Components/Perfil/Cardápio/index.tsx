@@ -1,9 +1,11 @@
-import ItemCardapio, { type PropsItem } from "../itemCardapio"
 import { useParams } from "react-router-dom"
 
-import { GridCardapio } from "./styles"
-import { useGetRestaurantsQuery } from "../../../store/services/api"
+import ItemCardapio, { type PropsItem } from "../itemCardapio"
 import { Loader } from "../../Loader"
+
+import { useGetRestaurantsQuery } from "../../../store/services/api"
+
+import { GridCardapio } from "./styles"
 
 type ItemSelecionado = {
     onSelect: (itemAtual: PropsItem) => void
@@ -20,14 +22,14 @@ const Cardapio = ({ onSelect }: ItemSelecionado) => {
             <Loader  />
         ): (
              <div className="container">
-         <GridCardapio>
-            {produto?.cardapio.map((item) => (
-            <li key={item.id}>
-                <ItemCardapio onSelect={() => onSelect(item)} item={item} />
-            </li>
-            ))}
-        </GridCardapio>
-       </div>
+                <GridCardapio>
+                    {produto?.cardapio.map((item) => (
+                        <li key={item.id}>
+                            <ItemCardapio onSelect={() => onSelect(item)} item={item} />
+                        </li>
+                    ))}
+                </GridCardapio>
+            </div>
         )}
         </>
     )

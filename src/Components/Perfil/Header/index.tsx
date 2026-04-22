@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux'
-import type { RootReducer } from '../../../store'
 import { useNavigate } from 'react-router-dom'
+import { FaShoppingCart } from "react-icons/fa";
 
 import logo from '../../../assets/Hero.png'
+import type { RootReducer } from '../../../store'
 import { open } from '../../../store/reducers/Carrinho/cart'
 
-import { Cabeçalho } from './styles'
+import * as s from './styles'
 
 const HeaderPerfil = () => {
 
@@ -18,17 +19,17 @@ const HeaderPerfil = () => {
     }
 
     return(
-    <header>
-        <Cabeçalho>
-        <div className='container'>
-        <ul>
-            <li><p>Restaurante</p></li>
-            <li><img onClick={() => navigate('/')} src={logo} alt="" /></li>
-            <li className='openCart' onClick={openCart}><p>{items.length} produtos(s) no carrinho</p></li>
-        </ul>
-        </div>
-        </Cabeçalho>
-    </header>
+        <header>
+            <s.Header>
+                <div className='container'>
+                    <ul>
+                        <li><s.HeaderItem>Restaurante</s.HeaderItem></li>
+                        <li><img onClick={() => navigate('/')} src={logo} alt="" /></li>
+                        <li className='openCart' onClick={openCart}><s.CartCounting> {items.length} <FaShoppingCart color='#fff' size={24} /></s.CartCounting></li>
+                    </ul>
+                </div>
+            </s.Header>
+        </header>
 )
 }
 

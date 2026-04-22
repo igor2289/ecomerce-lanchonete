@@ -1,8 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 
-export const cores = {
-    primaria: 'rgba(238, 151, 94, 0.94)',
-    vermelho: '#E66767'
+export const colors = {
+    primaria: '#f03434ff',
+    vermelho: 'rgba(238, 53, 53, 0.89)',
 }
 
 export const breakpoints = {
@@ -17,13 +17,17 @@ export const GlobalCss = createGlobalStyle`
     box-sizing: border-box;
     font-family: Roboto, sans-serif;
 
+    body {
+        background-color: #111010ff;
+    }
+
      .viewport-shadow{
         inset: 0;
         position: fixed;
         display: flex;
         z-index: 99999;
         justify-content: center;
-        background: rgba(0, 0, 0, 0.7);
+        background: rgba(15, 15, 15, 0.7);
         height: 100%;
      }
 }

@@ -1,12 +1,20 @@
 import styled from "styled-components";
-import { cores } from "../../styles";
+import { colors } from "../../styles";
 
 
 export const CardHome = styled.div`
-    border: solid 1px ${cores.vermelho};
     padding-bottom: 8px;
     max-width: 472px;
     width: 100%;
+    border-radius: 0 0 8px 8px;
+    background-color: #201f1fff;
+    border-radius: 6px 6px 0 0;
+    transition: transform 0.15 ease;
+
+    &:hover {
+        box-shadow: 0 4px 12px rgba(226, 146, 93, 0.94);
+        border-radius: 8px;
+}
 `
 
 export const ImagensHome = styled.button`
@@ -18,6 +26,13 @@ export const ImagensHome = styled.button`
     border: none;
     background-repeat: no-repeat;
     background-size: cover;
+    border-radius: 8px 8px 0 0;
+    transition: transform 0.5s ease;
+
+    &:hover {
+        transform: scale(1.025);
+        border-radius: 8px;
+    }
 
     ul {
     top: 0;
@@ -34,7 +49,7 @@ export const ImagensHome = styled.button`
 export const ImageTitle = styled.ul`
     display: flex;
     position: relative;
-    color: ${cores.vermelho};
+    color: #e7a77cf6;
     justify-content: space-between;
     padding: 0 6px;
     list-style: none;
@@ -47,7 +62,7 @@ export const ImageTitle = styled.ul`
 `
 
 export const Description = styled.p`
-    color: ${cores.vermelho};
+    color: #fff;
     font-size: 14px;
     line-height: 22px;
     margin-left: 8px;
@@ -59,16 +74,27 @@ export const Description = styled.p`
 
 export const ButtonPerfil = styled.a`
     color: #FFEBD9;
-    background-color: ${cores.vermelho};
+    background-color: ${colors.vermelho};
     font-size: 14px;
-    width: 82px;
-    padding: 4px 6px;
-    height: 24px;
+    max-width: 126px;
+    padding: 4px;
+    height: 28px;
     text-decoration: none;
     font-weight: bold;
-    text-align: left;
-    display: block;
-    left: 0;
-    margin-left: 8px;
+    display: flex;
+    align-items: center;
+    margin-left: 12px;
     cursor: pointer;
+    border-radius: 6px;
+    justify-content: center;
+
+    p {
+        margin-right: 6px;
+    }
+
+    &:hover {
+        transform: scale(1.025);
+        box-shadow: 0 4px 4px 8px #rgba(0, 0, 0, 0.95);
+        background-color: #ca3939ff
+    }
 `

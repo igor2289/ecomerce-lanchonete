@@ -1,38 +1,39 @@
 import { useState } from "react"
+import { useSelector } from "react-redux"
+import { Outlet } from "react-router-dom"
+
 import BannerPerfil from "./Banner"
 import Cardapio from "./Cardápio"
 import HeaderPerfil from "./Header"
-
 import Sidebar from "../Sidebars/SidebarCompra"
-import { useSelector } from "react-redux"
-import type { RootReducer } from "../../store"
 import Modal from "./Modal"
+
+import type { RootReducer } from "../../store"
 import type { PropsItem } from "./itemCardapio"
-import { Outlet } from "react-router-dom"
 
 
 const Perfil = () => {
 
-    const [modalAberto, setModalAberto] = useState(false)
-    const [itemSelecionado, setItemSelecionado] = useState<PropsItem | null>(null)
+    const [openModal, setOpenModal] = useState(false)
+    const [selectedItem, setSelectedItem] = useState<PropsItem | null>(null)
     const { isOpen } = useSelector((state: RootReducer) => state.cart)
 
     return ( 
         <>
-        {modalAberto && itemSelecionado && (
+        {openModal && selectedItem && (
             <Modal onClose={() => {
-            setModalAberto(false)
-            }} item={itemSelecionado} />
+            setOpenModal(false)
+            }} item={selectedItem} />
         )}
          {isOpen && <Sidebar />}
 
-    <HeaderPerfil />
-    <BannerPerfil />
-    <Cardapio onSelect={(item) => {
-        setItemSelecionado(item)
-        setModalAberto(true)
-    }} />
-    <Outlet />
+        <HeaderPerfil />
+        <BannerPerfil />
+        <Cardapio onSelect={(item) => {
+            setSelectedItem(item)
+            setOpenModal(true)
+        }} />
+        <Outlet />
         </>
     )
    

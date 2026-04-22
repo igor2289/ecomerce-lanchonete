@@ -1,26 +1,26 @@
 import styled from "styled-components"
-import { cores } from "../../styles"
+import { colors } from "../../styles"
 
-export const ContainerFooter = styled.footer`
+export const FooterContainer = styled.footer`
     display: block;
     margin: 0 auto;
     text-align: center;
-    width: 100%;
+    max-width: 100%;
     padding-top: 80px;
     padding-bottom: 40px;
-    background-color: #FFEBD9;
+    background-color: #242222;
 
     img {
-    height: 56px;
-    width: 126px;
-    margin-bottom: 32px;
+    height: 72px;
+    width: 168px;
+    margin-bottom: 24px;
     display: flex;
     align-items: center;
     margin: 0 auto;
     }
 `
 
-export const ListaDeLinks = styled.ul`
+export const LinksList = styled.ul`
     list-style: none;
     text-decoration: none;
     padding-top: 32px;
@@ -31,14 +31,18 @@ export const ListaDeLinks = styled.ul`
     a{
     padding-right: 8px;
     font-size: 24px;
-    color: ${cores.vermelho};
+    color: ${colors.vermelho};
+
+        &:hover {
+            color: #e7443eff;
+        }
     }
 `
 
-export const DescricaoFooter = styled.p`
+export const FooterDescription = styled.p`
     padding-top: 80px;
     font-size: 10px;
-    color: ${cores.vermelho};
+    color: ${colors.vermelho};
     text-decoration: none;
     width: 460px;
     margin: 0 auto;

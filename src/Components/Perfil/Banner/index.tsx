@@ -1,7 +1,8 @@
 import { useParams } from 'react-router-dom'
-import { ImagemPerfil, TituloBanner } from './styles'
-import { useGetRestaurantsQuery } from '../../../store/services/api'
 import { Loader } from '../../Loader'
+import { useGetRestaurantsQuery } from '../../../store/services/api'
+
+import * as s from './styles'
 
 const BannerPerfil = () => {
 
@@ -14,13 +15,12 @@ const BannerPerfil = () => {
         {isLoading ? (
             <Loader />
         ): (
-            <ImagemPerfil style={{backgroundImage: `url(${produto?.capa})`}}>
+            <s.PerfilImage style={{backgroundImage: `url(${produto?.capa})`}}>
         <div className="container">
             <h2>{produto?.tipo}</h2>
-            <TituloBanner>{produto?.titulo}</TituloBanner>
+            <s.BannerTitle>{produto?.titulo}</s.BannerTitle>
         </div>
-        </ImagemPerfil >
-        
+        </s.PerfilImage>
         )}
         </>
     )

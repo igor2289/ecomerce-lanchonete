@@ -5,7 +5,7 @@ import { open } from '../../../store/reducers/Carrinho/cart'
 import type { PropsCheckout } from "../../../models/checkout"
 import { checkInputHasError } from "../../../utils"
 
-import * as delivery from './styles'
+import * as s from './styles'
 
 const SidebarEntrega = ({ setStep, form }: PropsCheckout) => {
 
@@ -53,59 +53,59 @@ const SidebarEntrega = ({ setStep, form }: PropsCheckout) => {
     return(
         <>
         <div className="viewport-shadow">
-        <delivery.ContainerDelivery>
-            <delivery.TituloEntrega>Entrega</delivery.TituloEntrega>
-            <delivery.LabelEntrega htmlFor="">Quem irá receber</delivery.LabelEntrega>
-            <delivery.ItemFormulario>
-                <delivery.InputEntrega onBlur={form.handleBlur} name="delivery.receiver" onChange={(e) => form.setFieldValue('delivery.receiver', e.target.value.slice(0, 35))} value={form.values.delivery.receiver} id="receiver" type="text" />
-                {checkInputHasError('delivery.receiver', form) && (
+            <s.DeliveryContainer>
+                <s.DeliveryTitle>Entrega</s.DeliveryTitle>
+                <s.DeliveryLabel htmlFor="">Quem irá receber</s.DeliveryLabel>
+                <s.FormItem>
+                    <s.DeliveryInput onBlur={form.handleBlur} name="delivery.receiver" onChange={(e) => form.setFieldValue('delivery.receiver', e.target.value.slice(0, 35))} value={form.values.delivery.receiver} id="receiver" type="text" />
+                    {checkInputHasError('delivery.receiver', form) && (
                     <small>Nome inválido</small>
-                )}
-            </delivery.ItemFormulario>
-            <delivery.LabelEntrega htmlFor="">Endereço</delivery.LabelEntrega>
-            <delivery.ItemFormulario>
-                <delivery.InputEntrega onBlur={form.handleBlur} name="delivery.address.description" onChange={(e) => form.setFieldValue('delivery.address.description', e.target.value.slice(0, 45))} value={form.values.delivery.address.description} id="address" type="text" />
-                {checkInputHasError('delivery.address.description', form) && (
+                    )}
+                </s.FormItem>
+                    <s.DeliveryLabel htmlFor="">Endereço</s.DeliveryLabel>
+                <s.FormItem>
+                    <s.DeliveryInput onBlur={form.handleBlur} name="delivery.address.description" onChange={(e) => form.setFieldValue('delivery.address.description', e.target.value.slice(0, 45))} value={form.values.delivery.address.description} id="address" type="text" />
+                    {checkInputHasError('delivery.address.description', form) && (
                     <small>Endereço inválido</small>
-                )}
-            </delivery.ItemFormulario>
-            <delivery.LabelEntrega htmlFor="">Cidade</delivery.LabelEntrega>
-            <delivery.ItemFormulario>
-                <delivery.InputEntrega onBlur={form.handleBlur} name="delivery.address.city" onChange={(e) => form.setFieldValue('delivery.address.city', e.target.value.slice(0, 25))} value={form.values.delivery.address.city}  id="city" type="text" />
-                {checkInputHasError('delivery.address.city', form) && (
+                    )}
+                </s.FormItem>
+                <s.DeliveryLabel htmlFor="">Cidade</s.DeliveryLabel>
+                <s.FormItem>
+                    <s.DeliveryInput onBlur={form.handleBlur} name="delivery.address.city" onChange={(e) => form.setFieldValue('delivery.address.city', e.target.value.slice(0, 25))} value={form.values.delivery.address.city}  id="city" type="text" />
+                    {checkInputHasError('delivery.address.city', form) && (
                     <small>Cidade inválida</small>
-                )}
-            </delivery.ItemFormulario>
-            <delivery.DisplayFlex>
-            <delivery.ItemFormulario>
-                <delivery.LabelEntrega htmlFor="">CEP</delivery.LabelEntrega>
-                <delivery.InputEntrega onBlur={form.handleBlur} name="delivery.address.zipCode" onChange={(e) => form.setFieldValue('delivery.address.zipCode', e.target.value.replace(/\D/g, ''))} value={formatCEP(form.values.delivery.address.zipCode)} id="cep" type="text" />
-                {checkInputHasError('delivery.address.zipCode', form) && (
-                    <small>CEP inválido</small>
-                )}
-                </delivery.ItemFormulario>
-                <delivery.ItemFormulario>
-                <delivery.LabelEntrega htmlFor="">Número</delivery.LabelEntrega>
-                <delivery.InputEntrega onBlur={form.handleBlur} name="delivery.address.number" onChange={(e) => form.setFieldValue('delivery.address.number', e.target.value.slice(0, 15))} value={form.values.delivery.address.number} id="number" type="text" />
-                {checkInputHasError('delivery.address.number', form) && (
-                    <small>Número inválido</small>
-                )}
-                </delivery.ItemFormulario>
-                </delivery.DisplayFlex>
-                <delivery.LabelEntrega htmlFor="">Complemento (opcional)</delivery.LabelEntrega>
-                <delivery.ItemFormulario>
-                <delivery.InputEntrega onBlur={form.handleBlur} name="delivery.address.complement" onChange={form.handleChange} value={form.values.delivery.address.complement} id="complement" type="text" />
-                </delivery.ItemFormulario>
-                <delivery.BotoesEntrega>
-                <delivery.ItemFormulario>
-                    <delivery.ButtonEntrega onClick={handleNext} type="button">Continuar com o pagamento</delivery.ButtonEntrega>
-                </delivery.ItemFormulario>
-                <delivery.ItemFormulario>
-                    <delivery.ButtonEntrega onClick={cartReturn} type="button">Voltar para o carrinho</delivery.ButtonEntrega>
-                </delivery.ItemFormulario>
-                </delivery.BotoesEntrega>
-            </delivery.ContainerDelivery>
-            </div>
+                    )}
+                </s.FormItem>
+                <s.DisplayFlex>
+                    <s.FormItem>
+                        <s.DeliveryLabel htmlFor="">CEP</s.DeliveryLabel>
+                        <s.DeliveryInput onBlur={form.handleBlur} name="delivery.address.zipCode" onChange={(e) => form.setFieldValue('delivery.address.zipCode', e.target.value.replace(/\D/g, ''))} value={formatCEP(form.values.delivery.address.zipCode)} id="cep" type="text" />
+                        {checkInputHasError('delivery.address.zipCode', form) && (
+                        <small>CEP inválido</small>
+                        )}
+                    </s.FormItem>
+                    <s.FormItem>
+                        <s.DeliveryLabel htmlFor="">Número</s.DeliveryLabel>
+                        <s.DeliveryInput onBlur={form.handleBlur} name="delivery.address.number" onChange={(e) => form.setFieldValue('delivery.address.number', e.target.value.slice(0, 15))} value={form.values.delivery.address.number} id="number" type="text" />
+                        {checkInputHasError('delivery.address.number', form) && (
+                        <small>Número inválido</small>
+                        )}
+                    </s.FormItem>
+                </s.DisplayFlex>
+                <s.DeliveryLabel htmlFor="">Complemento (opcional)</s.DeliveryLabel>
+                <s.FormItem>
+                    <s.DeliveryInput onBlur={form.handleBlur} name="delivery.address.complement" onChange={form.handleChange} value={form.values.delivery.address.complement} id="complement" type="text" />
+                </s.FormItem>
+                <s.DeliveryButtons>
+                    <s.FormItem>
+                        <s.DeliveryButton onClick={handleNext} type="button">Continuar com o pagamento</s.DeliveryButton>
+                    </s.FormItem>
+                <s.FormItem>
+                    <s.DeliveryButton onClick={cartReturn} type="button">Voltar para o carrinho</s.DeliveryButton>
+                </s.FormItem>
+                </s.DeliveryButtons>
+            </s.DeliveryContainer>
+        </div>
         </>
     )
 }

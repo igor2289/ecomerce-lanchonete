@@ -1,10 +1,11 @@
 import { useDispatch } from 'react-redux'
+
 import type { PropsItem } from '../itemCardapio'
-import { ButtonFechar, DescricaoModal, ImagemModal, ModalContainer, TituloModal } from './styles'
+import { FoodButton } from '../itemCardapio/styles'
+import { numberFormat } from '../../../utils'
 import { add, open } from '../../../store/reducers/Carrinho/cart'
 
-import { ButtonCardapio } from '../itemCardapio/styles'
-import { formataPreco } from '../../../utils'
+import * as s from './styles'
 
 type ModalProps = {
   onClose: () => void
@@ -21,22 +22,23 @@ const Modal = ({ item, onClose }: ModalProps) => {
     dispatch(open())
   }
 
-     return (
-         <>
-           <div className="viewport-shadow">
-            <ModalContainer className="container"> 
-            <div>
-             <ImagemModal src={item.foto} alt="" />
-            </div> 
-            <div> 
-              <ButtonFechar onClick={onClose}>X</ButtonFechar>
-              <TituloModal>{item.nome}</TituloModal>
-              <DescricaoModal>{item.descricao}</DescricaoModal>
-              <DescricaoModal>{item.porcao}</DescricaoModal>
-              <ButtonCardapio className='reduceWidth' onClick={addToCart}>Adicionar ao carrinho - {formataPreco(item.preco)}</ButtonCardapio>
-            </div> 
-              </ModalContainer> 
-          </div>
-                     </>
-                      ) }
+  return (
+    <>
+    <div className="viewport-shadow">
+      <s.ModalContainer className="container"> 
+        <div>
+          <s.ModalImage src={item.foto} alt="" />
+        </div> 
+        <div> 
+          <s.CloseButton onClick={onClose}>X</s.CloseButton>
+          <s.ModalTitle>{item.nome}</s.ModalTitle>
+          <s.ModalDescription>{item.descricao}</s.ModalDescription>
+          <s.ModalDescription>{item.porcao}</s.ModalDescription>
+          <FoodButton className='reduceWidth' onClick={addToCart}>Adicionar ao carrinho - {numberFormat(item.preco)}</FoodButton>
+        </div> 
+          </s.ModalContainer> 
+        </div>
+    </>
+  )
+}
  export default Modal

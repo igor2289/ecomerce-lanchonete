@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { breakpoints, cores } from "../../../styles";
+import { breakpoints } from "../../../styles";
 
-export const ButtonFechar = styled.a`
+export const CloseButton = styled.a`
     background: Transparent;
     position: absolute;
     top: 8px;
@@ -16,7 +16,7 @@ export const ButtonFechar = styled.a`
 
 export const ModalContainer = styled.div`
     width: 100%;
-    background-color: ${cores.vermelho};
+    background-color: #201f1fff;
     padding: 32px;
     display: flex;
     height: 344px;
@@ -25,6 +25,7 @@ export const ModalContainer = styled.div`
     top: 48px;
     z-index: 999;
     backdrop-filter: blur(1.5px);
+    border-radius: 0 0 8px 8px;
 
     .reduceWidth {
         width: 218px;
@@ -39,11 +40,12 @@ export const ModalContainer = styled.div`
     }
 `
 
-export const ImagemModal = styled.img`
+export const ModalImage = styled.img`
     width: 280px;
     height: 280px;
     margin-right: 24px;
     object-fit: cover;
+    border-radius: 8px;
 
     @media (max-width: ${breakpoints.tablet}) {
         padding-bottom: 16px;
@@ -51,16 +53,16 @@ export const ImagemModal = styled.img`
     }
 `
 
-export const TituloModal = styled.h3`
-    color: #FFFFFF;
+export const ModalTitle = styled.h3`
+    color: #e7a77cf6;
     font-weight: 900;
     font-size: 18px;
     line-height: 100%;
     margin-bottom: 16px;
 `
 
-export const DescricaoModal = styled.p`
-    color: #FFFFFF;
+export const ModalDescription = styled.p`
+    color: #fff;
     margin-bottom: 16px;
     font-size: 14px;
     line-height: 22px;

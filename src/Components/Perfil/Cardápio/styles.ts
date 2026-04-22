@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { breakpoints, cores } from "../../../styles";
+import { breakpoints } from "../../../styles";
 
 export const GridCardapio = styled.ul`
     display: grid;
@@ -16,10 +16,11 @@ export const GridCardapio = styled.ul`
     }
 
     li {
-    background-color: ${cores.vermelho};
+    background-color: #201f1fff;
     width: 100%;
     padding: 8px;
     cursor: pointer;
+    border-radius: 8px;
 
 
     @media (max-width: ${breakpoints.tablet}) {

@@ -1,14 +1,15 @@
 import styled from "styled-components";
-import { cores } from "../../../styles";
+import { colors } from "../../../styles";
 
 export const ContainerPayment = styled.div`
-    background-color: ${cores.vermelho};
+    background-color: #201f1fff;
     padding: 32px 16px;
     display: block;
     position: fixed;
     right: 0;
     width: 360px;
     height: 100%;
+    box-shadow: -8px 0 20px rgba(0, 0, 0, 0.5);
 `
 
 export const InputPayment = styled.input`
@@ -64,8 +65,8 @@ export const LabelCode = styled.label`
 `
 
 export const ButtonPayment = styled.button`
-    color: ${cores.vermelho};
-    background-color: #FFEBD9;
+    color: #FFEBD9;
+    background-color: ${colors.vermelho};
     border: none;        
     font-weight: bold;
     font-size: 14px;
@@ -75,6 +76,7 @@ export const ButtonPayment = styled.button`
     white-space: nowrap;
     height: 24px;
     cursor: pointer;
+    border-radius: 4px;
 
     &.marginTop {
         margin-top: 24px;
@@ -83,10 +85,6 @@ export const ButtonPayment = styled.button`
 
 export const ErrorMessage = styled.small`
     padding: 16px 0;
-    color: #fff;
+    color: rgba(230, 62, 62, 0.97);
     font-size: 12px;
-
-     &.marginLeft {
-        
-    }
 `

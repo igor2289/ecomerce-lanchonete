@@ -1,6 +1,6 @@
 import Card from "../Card";
 import type { Restaurante } from "../Home";
-import { CardsList, ContainerCards } from "./styles";
+import * as s from "./styles";
 
 type PropsProdutos = {
     produto: Restaurante[]
@@ -9,17 +9,17 @@ type PropsProdutos = {
 const SectionHome = ({ produto }: PropsProdutos) => {
 
     return(
-            <div className="container">
-             <ContainerCards>
-            <CardsList>
-                {produto.map((product) => (
-                    <li key={product.id}>
-                        <Card id={product.id} avaliacao={product.avaliacao} tipo={product.tipo} foto={product.capa} description={product.descricao} title={product.titulo} destacado={product.destacado} />
-                    </li>
-                ))}
-            </CardsList>
-            </ContainerCards>
-            </div>
-            )
+        <div className="container">
+            <s.ContainerCards>
+                <s.CardsList>
+                    {produto.map((product) => (
+                        <li key={product.id}>
+                            <Card id={product.id} avaliation={product.avaliacao} type={product.tipo} pic={product.capa} description={product.descricao} title={product.titulo} prominence={product.destacado} />
+                        </li>
+                    ))}
+                </s.CardsList>
+            </s.ContainerCards>
+        </div>
+    )
 }
 export default SectionHome

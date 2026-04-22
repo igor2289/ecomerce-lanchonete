@@ -1,9 +1,9 @@
 import { SyncLoader } from "react-spinners";
 import { Container } from "./styles";
-import { cores } from "../../styles";
+import { colors } from "../../styles";
 
 export const Loader = () => (
     <Container>
-        <SyncLoader color={cores.vermelho} />
+        <SyncLoader color={colors.vermelho} />
     </Container>
 )

@@ -1,9 +1,11 @@
-import { DisplayFlex,  ItemFormulario, TituloEntrega } from "../SidebarEntrega/styles";
-import { ButtonPayment, ContainerPayment, ErrorMessage,  Input2, Input3, Input4, InputPayment, LabelCode, LabelPayment } from "./styles";
-import { checkInputHasError, formataPreco, getTotalPrice } from "../../../utils";
 import { useSelector } from "react-redux";
+
+import { DisplayFlex,  FormItem, DeliveryTitle } from "../SidebarEntrega/styles";
 import type { RootReducer } from "../../../store";
 import type { PropsCheckout } from "../../../models/checkout";
+import { checkInputHasError, numberFormat, getTotalPrice } from "../../../utils";
+
+import * as s from "./styles";
 
 export type PaymentFormValues = {
   name: string
@@ -73,33 +75,33 @@ const SidebarPayment = ({ form, setStep, isLoading, purchase }: PropsCheckout) =
     return (
     <>
     <div className="viewport-shadow">
-        <ContainerPayment>
-        <TituloEntrega>Pagamento - Valor a pagar {formataPreco(getTotalPrice(items))}</TituloEntrega>
-        <LabelPayment htmlFor="">Nome no cartão</LabelPayment>
-                <InputPayment onBlur={form.handleBlur} name="payment.card.name" onChange={(e) => form.setFieldValue('payment.card.name', formatCardName(e.target.value))} value={formatCardName(form.values.payment.card.name)} id="cardName" type="text" />
+        <s.ContainerPayment>
+            <DeliveryTitle>Pagamento - Valor a pagar {numberFormat(getTotalPrice(items))}</DeliveryTitle>
+            <s.LabelPayment htmlFor="">Nome no cartão</s.LabelPayment>
+                <s.InputPayment onBlur={form.handleBlur} name="payment.card.name" onChange={(e) => form.setFieldValue('payment.card.name', formatCardName(e.target.value))} value={formatCardName(form.values.payment.card.name)} id="cardName" type="text" />
                 {checkInputHasError('payment.card.name', form) && (
-                    <ErrorMessage className="marginLeft">Nome inválido</ErrorMessage>
+                    <s.ErrorMessage className="marginLeft">Nome inválido</s.ErrorMessage>
                 )}
-        <DisplayFlex>
-            <div>
-                <LabelPayment htmlFor="">Número do cartão</LabelPayment>
-                <Input2 onBlur={form.handleBlur} name="payment.card.number" onChange={(e) => form.setFieldValue('payment.card.number', e.target.value.replace(/\D/g, '').slice(0, 16))} value={formatCardNumber(form.values.payment.card.number)} id="cardNumber" type="text" />
-                {checkInputHasError('payment.card.number', form) && (
-                    <ErrorMessage className="marginLeft">Número inválido</ErrorMessage>
-                )}
-            </div>
-            <div>
-                <LabelCode htmlFor="">CVV</LabelCode>
-                <Input3 onBlur={form.handleBlur} name="payment.card.code" onChange={(e) => form.setFieldValue('payment.card.code',e.target.value.replace(/\D/g, '').slice(0, 3))} value={form.values.payment.card.code} id="cardCode" type="text" />
-                {checkInputHasError('payment.card.code', form) && (
-                    <ErrorMessage className="marginLeft">Código inválido</ErrorMessage>
-                )}
-            </div>
-        </DisplayFlex>
-        <DisplayFlex>
-            <div>
-                <LabelPayment htmlFor="">Mês de vencimento</LabelPayment>
-                <Input4 onBlur={form.handleBlur} name="payment.card.expires.month" value={form.values.payment.card.expires.month} type="number"  onChange={(e) => {
+            <DisplayFlex>
+                <div>
+                    <s.LabelPayment htmlFor="">Número do cartão</s.LabelPayment>
+                    <s.Input2 onBlur={form.handleBlur} name="payment.card.number" onChange={(e) => form.setFieldValue('payment.card.number', e.target.value.replace(/\D/g, '').slice(0, 16))} value={formatCardNumber(form.values.payment.card.number)} id="cardNumber" type="text" />
+                    {checkInputHasError('payment.card.number', form) && (
+                    <s.ErrorMessage className="marginLeft">Número inválido</s.ErrorMessage>
+                    )}
+                </div>
+                <div>
+                    <s.LabelCode htmlFor="">CVV</s.LabelCode>
+                    <s.Input3 onBlur={form.handleBlur} name="payment.card.code" onChange={(e) => form.setFieldValue('payment.card.code',e.target.value.replace(/\D/g, '').slice(0, 3))} value={form.values.payment.card.code} id="cardCode" type="text" />
+                    {checkInputHasError('payment.card.code', form) && (
+                    <s.ErrorMessage className="marginLeft">Código inválido</s.ErrorMessage>
+                    )}
+                </div>
+            </DisplayFlex>
+            <DisplayFlex>
+                <div>
+                    <s.LabelPayment htmlFor="">Mês de vencimento</s.LabelPayment>
+                    <s.Input4 onBlur={form.handleBlur} name="payment.card.expires.month" value={form.values.payment.card.expires.month} type="number"  onChange={(e) => {
                         let value = e.target.value.replace(/\D/g, '').slice(0, 2)
                    
                         if (value.length === 1 && Number(value) > 1) {
@@ -115,38 +117,38 @@ const SidebarPayment = ({ form, setStep, isLoading, purchase }: PropsCheckout) =
                     }
 
                     form.setFieldValue('payment.card.expires.month', value)
-                }} />
-                {checkInputHasError('payment.card.expires.month', form) && (
-                    <ErrorMessage className="marginLeft">Mês inválido</ErrorMessage>
-                )}
-            </div>
-            <div>
-                <LabelPayment htmlFor="">Ano de vencimento</LabelPayment>
-                <Input4 onBlur={form.handleBlur} name="payment.card.expires.year" value={form.values.payment.card.expires.year} type="number" onChange={(e) => {
-                    let value = e.target.value.replace(/\D/g, '').slice(0, 2)
+                    }} />
+                    {checkInputHasError('payment.card.expires.month', form) && (
+                    <s.ErrorMessage className="marginLeft">Mês inválido</s.ErrorMessage>
+                    )}
+                </div>
+                <div>
+                    <s.LabelPayment htmlFor="">Ano de vencimento</s.LabelPayment>
+                    <s.Input4 onBlur={form.handleBlur} name="payment.card.expires.year" value={form.values.payment.card.expires.year} type="number" onChange={(e) => {
+                        let value = e.target.value.replace(/\D/g, '').slice(0, 2)
 
-                    if (value.length === 2) {
-                    const num = Number(value)
-                    if (num < 26) value = '26'
-                    if (num > 36) value = '36'
-                    }
+                        if (value.length === 2) {
+                        const num = Number(value)
+                        if (num < 26) value = '26'
+                        if (num > 36) value = '36'
+                        }
 
                     form.setFieldValue('payment.card.expires.year', value)}}/>
                     {checkInputHasError('payment.card.expires.year', form) && (
-                    <ErrorMessage className="marginLeft">Ano inválido</ErrorMessage>
-                )}
-            </div>
-        </DisplayFlex>
-        <ItemFormulario>
-            <ButtonPayment className="marginTop" type="submit" onClick={formSubmit}>{isLoading ? 'Finalizando a compra...' : 'Finalizar compra'}</ButtonPayment>
-        </ItemFormulario>
-        <ItemFormulario>
-            <ButtonPayment onClick={() => setStep('delivery')} type="button">Voltar para a edição de endereço</ButtonPayment>
-        </ItemFormulario>
-        </ContainerPayment>
-        </div>
-        </>
-)
+                    <s.ErrorMessage className="marginLeft">Ano inválido</s.ErrorMessage>
+                    )}
+                </div>
+            </DisplayFlex>
+            <FormItem>
+                <s.ButtonPayment className="marginTop" type="submit" onClick={formSubmit}>{isLoading ? 'Finalizando a compra...' : 'Finalizar compra'}</s.ButtonPayment>
+            </FormItem>
+            <FormItem>
+                <s.ButtonPayment onClick={() => setStep('delivery')} type="button">Voltar para a edição de endereço</s.ButtonPayment>
+            </FormItem>
+        </s.ContainerPayment>
+    </div>
+    </>
+    )
 }
 
 export default SidebarPayment

@@ -1,11 +1,9 @@
 import styled from "styled-components";
-import { cores } from "../../styles";
-
-
+import { colors } from "../../styles";
 
 export const TagImage = styled.div`
     padding: 4px 6px;
-    background-color: ${cores.vermelho};
+    background-color: ${colors.vermelho};
     color: #FFEBD9;
     font-weight: bold;
     font-size: 12px;
@@ -20,11 +18,12 @@ export const TagImage = styled.div`
     justify-content: center;
     text-decoration: none;
     line-height: 100%;
+    border-radius: 8px;
 `
 
 export const TagDestaque = styled.div`
     padding: 4px 6px;
-    background-color: ${cores.vermelho};
+    background-color: ${colors.vermelho};
     color: #FFEBD9;
     font-weight: bold;
     font-size: 12px;
@@ -38,4 +37,5 @@ export const TagDestaque = styled.div`
     text-align: center;
     justify-content: center;
     text-decoration: none;
+    border-radius: 8px;
 `

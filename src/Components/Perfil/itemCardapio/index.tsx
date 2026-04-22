@@ -1,4 +1,4 @@
-import { ButtonCardapio, ContainerItem, DescricaoCardapio, ImagemCardapio, TituloCardapio } from './styles'
+import * as s from './styles'
 
 export type PropsItem = {
     foto: string
@@ -17,14 +17,14 @@ type ItemCardapioProps = {
 const ItemCardapio = ({ item, onSelect }: ItemCardapioProps) => {
 
     return (
-    <>
-    <ContainerItem>
-    <ImagemCardapio src={item.foto} alt="" />
-    <TituloCardapio>{item.nome}</TituloCardapio>
-    <DescricaoCardapio>{item.descricao}</DescricaoCardapio>
-    <ButtonCardapio onClick={() => onSelect(item)}>Mais detalhes</ButtonCardapio>
-    </ContainerItem>
-    </>
+        <>
+        <s.ContainerItem>
+            <s.FoodImage src={item.foto} alt="" />
+            <s.FoodTitle>{item.nome}</s.FoodTitle>
+            <s.FoodDescription>{item.descricao}</s.FoodDescription>
+            <s.FoodButton onClick={() => onSelect(item)}>Mais detalhes</s.FoodButton>
+        </s.ContainerItem>
+        </>
 )
 }
 

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { breakpoints } from "../../../styles";
 
-export const ImagemPerfil = styled.button`
+export const PerfilImage = styled.button`
      width: 100%;
      height: 280px;
      background-size: cover;
@@ -10,6 +10,8 @@ export const ImagemPerfil = styled.button`
      background-repeat: no-repeat;
      background-position: center 30%;  
      object-fit: cover;
+     border-bottom: 2px solid red;
+     box-shadow: 0 0 6px 0 #f53737ff;
 
 
       &::after {
@@ -37,7 +39,7 @@ export const ImagemPerfil = styled.button`
 }
 `
 
-export const TituloBanner = styled.h3`
+export const BannerTitle = styled.h3`
      position: absolute;
      bottom: 24px;
      color: #fff;

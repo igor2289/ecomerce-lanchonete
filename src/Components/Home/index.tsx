@@ -1,7 +1,7 @@
 import SectionHome from "../CardsList";
 import Header from "../Header";
-import { useGetRestaurantsQuery } from "../../store/services/api";
 import { Loader } from "../Loader";
+import { useGetRestaurantsQuery } from "../../store/services/api";
 
 export type Restaurante = {
     capa: string

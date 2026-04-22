@@ -1,36 +1,37 @@
 import styled from "styled-components";
-import { cores } from "../../../styles";
+import { colors } from "../../../styles";
 
-export const ContainerDelivery = styled.div`
-    background-color: ${cores.vermelho};
+export const DeliveryContainer = styled.div`
+    background-color: #201f1fff;
     padding: 32px 8px;
     display: block;
     position: fixed;
     right: 0;
     width: 360px;
     height: 100%;
+    box-shadow: -8px 0 20px rgba(0, 0, 0, 0.5);
 
     small {
         margin-top: 16px;
         font-size: 12px;
-        color: #fff;
+        color: rgba(230, 62, 62, 0.97);
     }
 `
 
-export const TituloEntrega = styled.h3`
+export const DeliveryTitle = styled.h3`
     color: #FFEBD9;
     font-weight: bold;
     font-size: 16px;
     padding: 16px 8px;
 `
 
-export const ItemFormulario = styled.div`
+export const FormItem = styled.div`
     display: block;
     padding: 4px;
     align-items: center;
 `
 
-export const LabelEntrega = styled.label`
+export const DeliveryLabel = styled.label`
     margin-left: 8px;
     font-weight: bold;
     font-size: 14px;
@@ -38,7 +39,7 @@ export const LabelEntrega = styled.label`
     color: #FFEBD9;
 `
 
-export const InputEntrega = styled.input`
+export const DeliveryInput = styled.input`
     width: 100%;
     border: none;
     height: 32px;
@@ -51,14 +52,14 @@ export const DisplayFlex = styled.div`
     margin-top: 8px;
 `
 
-export const BotoesEntrega = styled.div`
+export const DeliveryButtons = styled.div`
     padding-top: 16px;
 `
 
-export const ButtonEntrega = styled.a`
+export const DeliveryButton = styled.a`
     display: flex;
-    color: ${cores.vermelho};
-    background-color: #FFEBD9;
+    color: #FFEBD9;
+    background-color: ${colors.vermelho};
     padding: 4px 0;
     font-weight: bold;
     border: none;
@@ -68,4 +69,5 @@ export const ButtonEntrega = styled.a`
     font-size: 14px;
     text-decoration: none;
     width: 100%;
+    border-radius: 4px;
 `

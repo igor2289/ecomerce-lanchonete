@@ -1,12 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux'
-import type { RootReducer } from '../../../store'
-
-import * as styled from './styles'
-import { close, remove } from '../../../store/reducers/Carrinho/cart'
-import { formataPreco, getTotalPrice } from '../../../utils'
 import { useNavigate, useParams } from 'react-router-dom'
 
+import type { RootReducer } from '../../../store'
+import { close, remove } from '../../../store/reducers/Carrinho/cart'
+import { numberFormat, getTotalPrice } from '../../../utils'
 
+import * as s from './styles'
 
 const Sidebar = () => {
     const dispatch = useDispatch()
@@ -34,38 +33,39 @@ const Sidebar = () => {
 
     return(
         <>
-    <div onClick={closeCart} className="viewport-shadow">
-        <styled.ContainerSidebar onClick={(e) => e.stopPropagation()} className={isOpen ? 'is-open' : ''}>
-            <ul>
-                {items.map((item) => (
-                <li key={item.id}>
-            <styled.Produto>
-            <styled.PizzaSidebar src={item.foto} alt="" />
-            <styled.DescricaoProduto>
-            <h3>{item.nome}</h3>
-            <p>{formataPreco(item.preco)}</p>
-            </styled.DescricaoProduto>
-            <styled.BotaoRemover onClick={() => removeItem(item.id)}><i className="bi bi-trash3"></i></styled.BotaoRemover>
-            </styled.Produto>
-                </li>
-                ))}
-            </ul>
-          {items.length > 0 ? (
+        <div onClick={closeCart} className="viewport-shadow">
+            <s.SidebarContainer onClick={(e) => e.stopPropagation()} className={isOpen ? 'is-open' : ''}>
+                <ul>
+                    {items.map((item) => (
+                    <li key={item.id}>
+                        <s.Product>
+                        <s.PizzaSidebar src={item.foto} alt="" />
+                        <s.ProductDescription>
+                        <h3>{item.nome}</h3>
+                        <p>{numberFormat(item.preco)}</p>
+                        </s.ProductDescription>
+                        <s.RemoveButton onClick={() => removeItem(item.id)}><i className="bi bi-trash3"></i></s.RemoveButton>
+                        </s.Product>
+                    </li>
+                    ))}
+                </ul>
+            {items.length > 0 ? (
             <>
-            <styled.ValorTotal>
-            <p>Valor Total</p>
-            <p>{formataPreco(getTotalPrice(items))}</p>
-            </styled.ValorTotal>
-            <styled.BotaoCarrinho type='submit' onClick={goToDelivery}>Continuar com a entrega</styled.BotaoCarrinho>
+            <s.TotalValue>
+                <p>Valor Total</p>
+                <p>{numberFormat(getTotalPrice(items))}</p>
+            </s.TotalValue>
+            <s.CartButton type='submit' onClick={goToDelivery}>Continuar com a entrega</s.CartButton>
             </>
           ): (
-            <styled.ValorTotal>
-            <p className='text-center'>Você não adicionou produtos ao carrinho.</p>
-            </styled.ValorTotal>
+            <s.TotalValue>
+                <p className='text-center'>Você não adicionou produtos ao carrinho.</p>
+            </s.TotalValue>
           )}
-     </styled.ContainerSidebar>
+        </s.SidebarContainer>
     </div>
-    </>
-    )}
+        </>
+    )
+}
    
 export default Sidebar
